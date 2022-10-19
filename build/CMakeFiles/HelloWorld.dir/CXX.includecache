@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pdenn/Code/capstone/src/main.cpp
+iostream
+-
+test1.h
+/home/pdenn/Code/capstone/src/test1.h
+
+/home/pdenn/Code/capstone/src/test1.cpp
+test1.h
+/home/pdenn/Code/capstone/src/test1.h
+
+/home/pdenn/Code/capstone/src/test1.h
+iostream
+-
+
