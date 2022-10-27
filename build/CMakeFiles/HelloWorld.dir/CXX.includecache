@@ -6,17 +6,29 @@
 
 #IncludeRegexTransform: 
 
-/home/pdenn/Code/capstone/src/main.cpp
+/home/pdenn/Code/capstone/src/Board.h
+vector
+-
 iostream
 -
-test1.h
-/home/pdenn/Code/capstone/src/test1.h
 
-/home/pdenn/Code/capstone/src/test1.cpp
-test1.h
-/home/pdenn/Code/capstone/src/test1.h
+/home/pdenn/Code/capstone/src/Constants.h
 
-/home/pdenn/Code/capstone/src/test1.h
+/home/pdenn/Code/capstone/src/SDLManager.cpp
+SDLManager.h
+/home/pdenn/Code/capstone/src/SDLManager.h
+
+/home/pdenn/Code/capstone/src/SDLManager.h
+cstdio
+-
 iostream
 -
+SDL2/SDL.h
+-
+vector
+-
+Constants.h
+/home/pdenn/Code/capstone/src/Constants.h
+Board.h
+/home/pdenn/Code/capstone/src/Board.h
 

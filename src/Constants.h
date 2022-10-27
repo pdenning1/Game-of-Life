@@ -1,0 +1,10 @@
+#pragma once
+
+
+enum GAME_EVENTS
+{
+    GAME_EVENT_NO_EVENT,
+    GAME_EVENT_QUIT,
+    GAME_EVENT_K_UP,
+    GAME_EVENT_K_DOWN
+};

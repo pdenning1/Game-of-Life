@@ -7,4 +7,5 @@ Test::Test(int x) : _x(x)
 void Test::TestPrint()
 {
     std::cout << "x = " << _x << std::endl;
+    std::cout << "i just printed x" << std::endl;
 }

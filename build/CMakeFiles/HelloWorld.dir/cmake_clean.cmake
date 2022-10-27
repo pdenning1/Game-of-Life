@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/HelloWorld.dir/src/Board.cpp.o"
+  "CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.o"
   "CMakeFiles/HelloWorld.dir/src/main.cpp.o"
   "CMakeFiles/HelloWorld.dir/src/test1.cpp.o"
   "HelloWorld"

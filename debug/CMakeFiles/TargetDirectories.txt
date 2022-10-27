@@ -1,0 +1,3 @@
+/home/pdenn/Code/capstone/debug/CMakeFiles/edit_cache.dir
+/home/pdenn/Code/capstone/debug/CMakeFiles/rebuild_cache.dir
+/home/pdenn/Code/capstone/debug/CMakeFiles/HelloWorld.dir
