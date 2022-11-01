@@ -35,6 +35,15 @@ bool SDLManager::init()
 		}
 	}
 
+	_boardViewport.x = BOARD_X;
+	_boardViewport.y = BOARD_Y;
+	_boardViewport.w = BOARD_WIDTH;
+	_boardViewport.h = BOARD_HEIGHT;
+
+	_mouseEventX = 0;
+	_mouseEventY = 0;
+	_changeCell = false;
+
 	return success;
 }
 
@@ -67,6 +76,88 @@ void SDLManager::handleEvents()
 				break;
 			}
 		}
+
+			//If mouse event happened
+		if( e.type == SDL_MOUSEMOTION || e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP )
+		{
+			//Get mouse position
+			int x, y;
+			SDL_GetMouseState( &x, &y );
+
+			//Check if mouse is in button
+			bool inside = true;
+
+			//Mouse is left of the button
+			if( x < BOARD_X )
+			{
+				inside = false;
+			}
+			//Mouse is right of the button
+			else if( x > BOARD_X + BOARD_WIDTH )
+			{
+				inside = false;
+			}
+			//Mouse above the button
+			else if( y < BOARD_Y )
+			{
+				inside = false;
+			}
+			//Mouse below the button
+			else if( y > BOARD_Y + BOARD_HEIGHT )
+			{
+				inside = false;
+			}
+
+			//Mouse is outside button
+			if( !inside )
+			{
+				// handle other buttons here?
+			}
+			//Mouse is inside button
+			else
+			{
+				//Set mouse over sprite
+				switch( e.type )
+				{
+					case SDL_MOUSEMOTION:
+						// handle cell selection here
+						std::cout << "Mouse moving over board" << std::endl;
+						std::cout << "X: " << x << "     Y: " << y << std::endl;
+						break;
+					
+					case SDL_MOUSEBUTTONDOWN:
+						// handle mouse pressed here		
+						std::cout << "Mouse pressed" << std::endl;
+						std::cout << "X: " << x << "     Y: " << y << std::endl;
+						break;
+					
+					case SDL_MOUSEBUTTONUP:
+						// handle mouse released here		
+						std::cout << "Mouse released" << std::endl;
+						std::cout << "X: " << x << "     Y: " << y << std::endl;
+						_eventQueue.push_back(GAME_EVENT_CELL_CHANGE);
+						_changeCell = true;
+						break;
+				}
+
+				float xpercent = x - BOARD_X;
+				xpercent = xpercent / BOARD_WIDTH;
+				_mouseEventX = xpercent * SCREEN_WIDTH * 0.7; // TODO - figure out source of .7 factor...
+
+				float ypercent = y - BOARD_Y;
+				ypercent = ypercent / BOARD_HEIGHT;
+				_mouseEventY = ypercent * SCREEN_HEIGHT * 0.7;
+				
+
+				// _mouseEventX = ((x - BOARD_X) / BOARD_WIDTH) * SCREEN_WIDTH;
+				// _mouseEventY = ((y - BOARD_Y) / BOARD_HEIGHT) * SCREEN_HEIGHT;
+				std::cout << "boardX: " << _mouseEventX << "     boardY: " << _mouseEventY << std::endl;
+
+
+
+			}
+		}
+
 	}
 }
 
@@ -90,26 +181,79 @@ GAME_EVENTS SDLManager::getNextEvent()
 
 void SDLManager::DrawBoard(Board* board)
 {
-	int cellWidth = SCREEN_WIDTH / 20;
-	int cellHeight = SCREEN_WIDTH / 20;
+	int cellWidth = SCREEN_WIDTH / 25;
+	int cellHeight = SCREEN_WIDTH / 25;
 	int cellGap = cellWidth / 10;
 
 	int boardWidth = board->GetWidth();
 	int boardHeight = board->GetHeight();
 
+	SDL_RenderSetViewport( _renderer, &_boardViewport );
+
 	//Clear screen
-	SDL_SetRenderDrawColor( _renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-	SDL_RenderClear( _renderer );
+	//SDL_SetRenderDrawColor( _renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+	//SDL_RenderClear( _renderer );
 
 	for (int i = 0; i < boardWidth; i++)
 	{
-		int xPos = (cellWidth + cellGap) * i; 
+		for ( int j = 0; j < boardHeight; j++)
+		{
+			int xPos = (cellWidth + cellGap) * i; 
+			int yPos = (cellHeight + cellGap) * j;
+			bool mouseOver = false;
 
-		//Render black filled quad
-		SDL_Rect fillRect = { xPos, SCREEN_HEIGHT / 4, cellWidth, cellHeight };
-		SDL_SetRenderDrawColor( _renderer, 0x00, 0x00, 0x00, 0xFF );		
-		SDL_RenderFillRect( _renderer, &fillRect );
+			if (_mouseEventX > xPos)
+			{
+				if (_mouseEventX < (xPos + cellWidth))
+				{
+					if (_mouseEventY > yPos)
+					{
+						if (_mouseEventY < (yPos + cellHeight))
+						{
+							mouseOver = true;
+
+							if (_changeCell)
+							{
+								_changeCell = false;
+								board->ChangeCell(i,j);
+							}
+						}
+					}
+				}
+			}
+
+			if(!board->GetState(i,j))
+			{
+				//Render grey filled quad
+				SDL_Rect fillRect = { xPos, yPos, cellWidth, cellHeight };
+				SDL_SetRenderDrawColor( _renderer, 0x96, 0x96, 0x96, 0xFF );		
+				SDL_RenderFillRect( _renderer, &fillRect );
+			}
+			else
+			{
+				//Render red filled quad
+				SDL_Rect fillRect = { xPos, yPos, cellWidth, cellHeight };
+				SDL_SetRenderDrawColor( _renderer, 0x84, 0x02, 0x10, 0xFF );		
+				SDL_RenderFillRect( _renderer, &fillRect );
+			}
+
+			if(mouseOver)
+			{
+				// Highlight cell
+				SDL_Rect outlineRect = { xPos - cellGap, yPos - cellGap, cellWidth + (2*cellGap), cellHeight + (2*cellGap) };
+				SDL_SetRenderDrawColor( _renderer, 0x84, 0x02, 0x10, 0xFF );		
+				SDL_RenderDrawRect( _renderer, &outlineRect );
+			}
+			else
+			{
+				// clear highlight from previous mouseover
+				SDL_Rect outlineRect = { xPos - cellGap, yPos - cellGap, cellWidth + (2*cellGap), cellHeight + (2*cellGap) };
+				SDL_SetRenderDrawColor( _renderer, 0xFF, 0xFF, 0xFF, 0xFF );		
+				SDL_RenderDrawRect( _renderer, &outlineRect );
+			}
+		}
 	}
+
 
 
 
@@ -118,10 +262,6 @@ void SDLManager::DrawBoard(Board* board)
 	// SDL_SetRenderDrawColor( _renderer, 0xFF, 0x00, 0x00, 0xFF );		
 	// SDL_RenderFillRect( _renderer, &fillRect );
 
-	// //Render green outlined quad
-	// SDL_Rect outlineRect = { SCREEN_WIDTH / 6, SCREEN_HEIGHT / 6, SCREEN_WIDTH * 2 / 3, SCREEN_HEIGHT * 2 / 3 };
-	// SDL_SetRenderDrawColor( _renderer, 0x00, 0xFF, 0x00, 0xFF );		
-	// SDL_RenderDrawRect( _renderer, &outlineRect );
 	
 	// //Draw blue horizontal line
 	// SDL_SetRenderDrawColor( _renderer, 0x00, 0x00, 0xFF, 0xFF );		
@@ -135,8 +275,22 @@ void SDLManager::DrawBoard(Board* board)
 	// }
 
 	//Update screen
+	SDL_RenderPresent( _renderer );	
+}
+
+void SDLManager::DrawFrame()
+{
+	//Clear screen
+	SDL_SetRenderDrawColor( _renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+	SDL_RenderClear( _renderer );
+
+	//Render green outlined quad
+	SDL_Rect outlineRect = { BOARD_X - 10, BOARD_Y - 10, BOARD_WIDTH + 20, BOARD_HEIGHT + 20 };
+	SDL_SetRenderDrawColor( _renderer, 0x00, 0x00, 0x00, 0x00 );		
+	SDL_RenderDrawRect( _renderer, &outlineRect );
+
+	//Update screen
 	SDL_RenderPresent( _renderer );
-	
 }
 
 
@@ -229,6 +383,33 @@ SDL_Surface* SDLManager::loadSurface( std::string path )
     return optimizedSurface;
 }
 
+SDL_Texture* SDLManager::loadTexture( std::string path )
+{
+    //The final texture
+    SDL_Texture* newTexture = NULL;
+
+    //Load image at specified path
+    SDL_Surface* loadedSurface = SDL_LoadBMP( path.c_str() );
+    if( loadedSurface == NULL )
+    {
+        printf( "Unable to load image %s! SDL_image Error: %s\n", path.c_str(), SDL_GetError() );
+    }
+    else
+    {
+        //Create texture from surface pixels
+        newTexture = SDL_CreateTextureFromSurface( _renderer, loadedSurface );
+        if( newTexture == NULL )
+        {
+            printf( "Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError() );
+        }
+
+        //Get rid of old loaded surface
+        SDL_FreeSurface( loadedSurface );
+    }
+
+    return newTexture;
+}
+
 void SDLManager::closeWindow()
 {
 	//Deallocate surface
@@ -244,4 +425,35 @@ void SDLManager::closeWindow()
 
 	//Quit SDL subsystems
 	SDL_Quit();
+}
+
+void SDLManager::TestTexture()
+{
+	bool quit = false;
+	SDL_Event e;
+	SDL_Texture* gTexture = loadTexture("hello_world.bmp");
+
+
+		//While application is running
+	while( !quit )
+	{
+		//Handle events on queue
+		while( SDL_PollEvent( &e ) != 0 )
+		{
+			//User requests quit
+			if( e.type == SDL_QUIT )
+			{
+				quit = true;
+			}
+		}
+
+		//Clear screen
+		SDL_RenderClear( _renderer );
+
+		//Render texture to screen
+		SDL_RenderCopy( _renderer, gTexture, NULL, NULL );
+
+		//Update screen
+		SDL_RenderPresent( _renderer );
+	}
 }

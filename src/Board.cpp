@@ -5,11 +5,12 @@ Board::Board(int width, int height)
 {
     for(int i = 0; i < width; i++)
     {
-        std::vector<bool> row;
+        std::vector<bool> col;
+        _board.push_back(col);
 
         for(int j = 0; j < height; j++)
         {
-            row.push_back(false);
+            _board[i].push_back(false);
         }
     }
 

@@ -12,6 +12,11 @@
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
+const int BOARD_X = SCREEN_WIDTH / 7;
+const int BOARD_Y = SCREEN_HEIGHT / 7;
+const int BOARD_WIDTH = (SCREEN_WIDTH / 7) * 5;
+const int BOARD_HEIGHT = (SCREEN_HEIGHT / 7) * 5;
+
 //Key press surfaces constants
 enum KeyPressSurfaces
 {
@@ -42,9 +47,14 @@ public:
     GAME_EVENTS getNextEvent();
 
     void DrawBoard(Board* board);
+    void DrawFrame();
+
+    ////
+    void TestTexture();
 
 private:
     SDL_Surface* loadSurface( std::string path );
+    SDL_Texture* loadTexture( std::string path );
 
     bool addEvent(GAME_EVENTS event);
 
@@ -60,5 +70,11 @@ private:
 
     SDL_Surface* _currentSurface = NULL;
 
+    SDL_Rect _boardViewport;
+
     std::vector<GAME_EVENTS> _eventQueue; 
+
+    float _mouseEventX;
+    float _mouseEventY;
+    bool _changeCell;
 };

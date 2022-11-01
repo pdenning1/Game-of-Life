@@ -34,6 +34,11 @@ int main() {
 		bool quit = false;
 		Board* board = new Board(10,10);
 
+
+		//sdlManager->TestTexture();
+
+		sdlManager->DrawFrame();
+
 		while(!quit)
 		{
 			sdlManager->DrawBoard(board);
@@ -46,6 +51,11 @@ int main() {
 				if (event == GAME_EVENT_QUIT)
 				{
 					quit = true;
+				}
+
+				else if (event == GAME_EVENT_CELL_CHANGE)
+				{
+					
 				}
 
 			}
