@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "HelloWorld"
+			"path" : "GameOfLife"
 		}
 	],
 	"backtrace" : 1,
@@ -70,7 +70,7 @@
 			]
 		}
 	],
-	"id" : "HelloWorld::@6890427a1f51a3e7e1df",
+	"id" : "GameOfLife::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -91,8 +91,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "HelloWorld",
-	"nameOnDisk" : "HelloWorld",
+	"name" : "GameOfLife",
+	"nameOnDisk" : "GameOfLife",
 	"paths" : 
 	{
 		"build" : ".",

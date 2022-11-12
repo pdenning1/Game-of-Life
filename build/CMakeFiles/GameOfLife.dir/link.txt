@@ -1,0 +1,1 @@
+/usr/bin/g++ -g CMakeFiles/GameOfLife.dir/src/Board.cpp.o CMakeFiles/GameOfLife.dir/src/Button.cpp.o CMakeFiles/GameOfLife.dir/src/GameManager.cpp.o CMakeFiles/GameOfLife.dir/src/SDLManager.cpp.o CMakeFiles/GameOfLife.dir/src/main.cpp.o -o GameOfLife  -lSDL2 

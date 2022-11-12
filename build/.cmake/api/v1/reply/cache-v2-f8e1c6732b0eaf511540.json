@@ -839,7 +839,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "HelloWorld"
+			"value" : "GameOfLife"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1120,6 +1120,30 @@
 			],
 			"type" : "BOOL",
 			"value" : "FALSE"
+		},
+		{
+			"name" : "GameOfLife_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/pdenn/Code/capstone/build"
+		},
+		{
+			"name" : "GameOfLife_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/pdenn/Code/capstone"
 		},
 		{
 			"name" : "HelloWorld_BINARY_DIR",

@@ -72,7 +72,7 @@ CMAKE_BINARY_DIR = /home/pdenn/Code/capstone/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/HelloWorld.dir/all
+all: CMakeFiles/GameOfLife.dir/all
 
 .PHONY : all
 
@@ -82,36 +82,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/HelloWorld.dir/clean
+clean: CMakeFiles/GameOfLife.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/HelloWorld.dir
+# Target rules for target CMakeFiles/GameOfLife.dir
 
 # All Build rule for target.
-CMakeFiles/HelloWorld.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pdenn/Code/capstone/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target HelloWorld"
-.PHONY : CMakeFiles/HelloWorld.dir/all
+CMakeFiles/GameOfLife.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pdenn/Code/capstone/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target GameOfLife"
+.PHONY : CMakeFiles/GameOfLife.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/HelloWorld.dir/rule: cmake_check_build_system
+CMakeFiles/GameOfLife.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pdenn/Code/capstone/build/CMakeFiles 6
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/HelloWorld.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/GameOfLife.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pdenn/Code/capstone/build/CMakeFiles 0
-.PHONY : CMakeFiles/HelloWorld.dir/rule
+.PHONY : CMakeFiles/GameOfLife.dir/rule
 
 # Convenience name for target.
-HelloWorld: CMakeFiles/HelloWorld.dir/rule
+GameOfLife: CMakeFiles/GameOfLife.dir/rule
 
-.PHONY : HelloWorld
+.PHONY : GameOfLife
 
 # clean rule for target.
-CMakeFiles/HelloWorld.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/clean
-.PHONY : CMakeFiles/HelloWorld.dir/clean
+CMakeFiles/GameOfLife.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/clean
+.PHONY : CMakeFiles/GameOfLife.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

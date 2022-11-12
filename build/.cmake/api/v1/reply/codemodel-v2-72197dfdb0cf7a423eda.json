@@ -26,7 +26,7 @@
 					[
 						0
 					],
-					"name" : "HelloWorld",
+					"name" : "GameOfLife",
 					"targetIndexes" : 
 					[
 						0
@@ -37,9 +37,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "HelloWorld::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-HelloWorld-Debug-f50c10eebc4eb1705b4a.json",
-					"name" : "HelloWorld",
+					"id" : "GameOfLife::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-GameOfLife-Debug-b1f841effbd2cd74ed33.json",
+					"name" : "GameOfLife",
 					"projectIndex" : 0
 				}
 			]

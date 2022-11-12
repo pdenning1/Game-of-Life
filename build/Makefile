@@ -130,17 +130,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named HelloWorld
+# Target rules for targets named GameOfLife
 
 # Build rule for target.
-HelloWorld: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 HelloWorld
-.PHONY : HelloWorld
+GameOfLife: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 GameOfLife
+.PHONY : GameOfLife
 
 # fast build rule for target.
-HelloWorld/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/build
-.PHONY : HelloWorld/fast
+GameOfLife/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/build
+.PHONY : GameOfLife/fast
 
 src/Board.o: src/Board.cpp.o
 
@@ -148,7 +148,7 @@ src/Board.o: src/Board.cpp.o
 
 # target to build an object file
 src/Board.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/Board.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/Board.cpp.o
 .PHONY : src/Board.cpp.o
 
 src/Board.i: src/Board.cpp.i
@@ -157,7 +157,7 @@ src/Board.i: src/Board.cpp.i
 
 # target to preprocess a source file
 src/Board.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/Board.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/Board.cpp.i
 .PHONY : src/Board.cpp.i
 
 src/Board.s: src/Board.cpp.s
@@ -166,7 +166,7 @@ src/Board.s: src/Board.cpp.s
 
 # target to generate assembly for a file
 src/Board.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/Board.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/Board.cpp.s
 .PHONY : src/Board.cpp.s
 
 src/Button.o: src/Button.cpp.o
@@ -175,7 +175,7 @@ src/Button.o: src/Button.cpp.o
 
 # target to build an object file
 src/Button.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/Button.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/Button.cpp.o
 .PHONY : src/Button.cpp.o
 
 src/Button.i: src/Button.cpp.i
@@ -184,7 +184,7 @@ src/Button.i: src/Button.cpp.i
 
 # target to preprocess a source file
 src/Button.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/Button.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/Button.cpp.i
 .PHONY : src/Button.cpp.i
 
 src/Button.s: src/Button.cpp.s
@@ -193,7 +193,7 @@ src/Button.s: src/Button.cpp.s
 
 # target to generate assembly for a file
 src/Button.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/Button.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/Button.cpp.s
 .PHONY : src/Button.cpp.s
 
 src/GameManager.o: src/GameManager.cpp.o
@@ -202,7 +202,7 @@ src/GameManager.o: src/GameManager.cpp.o
 
 # target to build an object file
 src/GameManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/GameManager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/GameManager.cpp.o
 .PHONY : src/GameManager.cpp.o
 
 src/GameManager.i: src/GameManager.cpp.i
@@ -211,7 +211,7 @@ src/GameManager.i: src/GameManager.cpp.i
 
 # target to preprocess a source file
 src/GameManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/GameManager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/GameManager.cpp.i
 .PHONY : src/GameManager.cpp.i
 
 src/GameManager.s: src/GameManager.cpp.s
@@ -220,7 +220,7 @@ src/GameManager.s: src/GameManager.cpp.s
 
 # target to generate assembly for a file
 src/GameManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/GameManager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/GameManager.cpp.s
 .PHONY : src/GameManager.cpp.s
 
 src/SDLManager.o: src/SDLManager.cpp.o
@@ -229,7 +229,7 @@ src/SDLManager.o: src/SDLManager.cpp.o
 
 # target to build an object file
 src/SDLManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/SDLManager.cpp.o
 .PHONY : src/SDLManager.cpp.o
 
 src/SDLManager.i: src/SDLManager.cpp.i
@@ -238,7 +238,7 @@ src/SDLManager.i: src/SDLManager.cpp.i
 
 # target to preprocess a source file
 src/SDLManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/SDLManager.cpp.i
 .PHONY : src/SDLManager.cpp.i
 
 src/SDLManager.s: src/SDLManager.cpp.s
@@ -247,7 +247,7 @@ src/SDLManager.s: src/SDLManager.cpp.s
 
 # target to generate assembly for a file
 src/SDLManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/SDLManager.cpp.s
 .PHONY : src/SDLManager.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -256,7 +256,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -265,7 +265,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -274,7 +274,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 # Help Target
@@ -285,7 +285,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... HelloWorld"
+	@echo "... GameOfLife"
 	@echo "... src/Board.o"
 	@echo "... src/Board.i"
 	@echo "... src/Board.s"
