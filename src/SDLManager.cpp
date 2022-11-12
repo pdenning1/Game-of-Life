@@ -35,11 +35,6 @@ bool SDLManager::init()
 		}
 	}
 
-	// _boardViewport.x = BOARD_X;
-	// _boardViewport.y = BOARD_Y;
-	// _boardViewport.w = BOARD_WIDTH;
-	// _boardViewport.h = BOARD_HEIGHT;
-
 	_mouseEventX = 0;
 	_mouseEventY = 0;
 	_changeCell = false;
@@ -156,23 +151,10 @@ void SDLManager::handleEvents()
 						break;
 				}
 
-				//float xpercent = x - BOARD_X;
-				//xpercent = xpercent / BOARD_WIDTH;
 				_mouseEventX = x;
-				//_mouseEventX = xpercent * SCREEN_WIDTH * 0.7; // TODO - figure out source of .7 factor...
-
-				//float ypercent = y - BOARD_Y;
-				//ypercent = ypercent / BOARD_HEIGHT;
 				_mouseEventY = y;
-				//_mouseEventY = ypercent * SCREEN_HEIGHT * 0.7;
-				
 
-				// _mouseEventX = ((x - BOARD_X) / BOARD_WIDTH) * SCREEN_WIDTH;
-				// _mouseEventY = ((y - BOARD_Y) / BOARD_HEIGHT) * SCREEN_HEIGHT;
 				std::cout << "boardX: " << _mouseEventX << "     boardY: " << _mouseEventY << std::endl;
-
-
-
 			}
 		}
 
