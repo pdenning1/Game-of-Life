@@ -24,6 +24,8 @@ public:
 
 
 private:
+    void iterateBoard();
+
     SDLManager* _sdlManager;
     // SaveFileManager* _saveFileManager;
 

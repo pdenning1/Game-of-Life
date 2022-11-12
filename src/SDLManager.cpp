@@ -227,7 +227,7 @@ void SDLManager::DrawBoard(Board* board, int scalingFactor)
 				}
 			}
 
-			if(!board->GetState(i,j))
+			if(!board->GetCellState(i,j))
 			{
 				//Render grey filled quad
 				SDL_Rect fillRect = { xPos, yPos, cellWidth, cellHeight };

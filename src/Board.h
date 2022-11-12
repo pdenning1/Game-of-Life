@@ -13,10 +13,9 @@ public:
     int GetWidth();
     int GetHeight();
 
-    bool GetState(int i, int j) { return _board[i][j]; }
-    void ChangeCell( int i, int j) { _board[i][j] = !_board[i][j]; }
-
-    void Iterate();
+    bool GetCellState(int i, int j) { return _board[i][j]; }
+    void SetCellState( int i, int j, bool state) { _board[i][j] = state; }
+    void ChangeCell(int i, int j) { _board[i][j] = !_board[i][j]; }
 
 private:
     std::vector<std::vector<bool>> _board;

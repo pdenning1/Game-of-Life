@@ -99,7 +99,7 @@ void GameManager::updateGameState()
     // update state
     if (_running)
     {
-        _currentBoard->Iterate();
+        this->iterateBoard();
 
         SDL_Delay(750); // TODO - implement timer / threading so that ui remains responsive
 
@@ -109,4 +109,57 @@ void GameManager::updateGameState()
 void GameManager::render()
 {
     _sdlManager->DrawBoard(_currentBoard, 60);
+}
+
+
+void GameManager::iterateBoard()
+{
+    int width = _currentBoard->GetWidth();
+    int height = _currentBoard->GetHeight();
+    _nextBoard = new Board(width, height);
+
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            if (((i > 0) && (i < width-1)) && ((j > 0) && (j < height-1))) // ignore edges for now.... TODO
+            {
+                int sum = 0;
+                for (int x = i -1; x <= i + 1; x++)
+                {
+                    for (int y = j - 1; y <= j + 1; y++)
+                    {
+                        if(_currentBoard->GetCellState(x, y))
+                        {
+                            sum++;
+                        }
+                    }
+                }
+
+                if(_currentBoard->GetCellState(i, j)) // if cell is populated
+                {
+                    sum--; // subtract 1 for current cell
+                    if(sum <= 1 || sum >= 4)
+                    {
+                        _nextBoard->SetCellState(i, j, false);
+                    }
+                    else
+                    {
+                        _nextBoard->SetCellState(i, j, true);
+                    }
+                }
+                else // if cell is empty
+                {
+                    if(sum == 3)
+                    {
+                        _nextBoard->SetCellState(i, j, true);
+                    }
+                }
+            }
+        }
+    }
+
+    delete _currentBoard;
+    _currentBoard = _nextBoard;
+    _nextBoard = nullptr;
 }

@@ -16,10 +16,6 @@ vector
 iostream
 -
 
-/home/pdenn/Code/capstone/src/Button.cpp
-Button.h
-/home/pdenn/Code/capstone/src/Button.h
-
 /home/pdenn/Code/capstone/src/Button.h
 cstdio
 -
@@ -66,10 +62,6 @@ Button.h
 
 /home/pdenn/Code/capstone/src/main.cpp
 iostream
--
-vector
--
-memory
 -
 GameManager.h
 /home/pdenn/Code/capstone/src/GameManager.h
