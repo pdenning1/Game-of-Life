@@ -89,9 +89,35 @@ CMakeFiles/HelloWorld.dir/src/Board.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HelloWorld.dir/src/Board.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pdenn/Code/capstone/src/Board.cpp -o CMakeFiles/HelloWorld.dir/src/Board.cpp.s
 
+CMakeFiles/HelloWorld.dir/src/Button.cpp.o: CMakeFiles/HelloWorld.dir/flags.make
+CMakeFiles/HelloWorld.dir/src/Button.cpp.o: ../src/Button.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pdenn/Code/capstone/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/HelloWorld.dir/src/Button.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/HelloWorld.dir/src/Button.cpp.o -c /home/pdenn/Code/capstone/src/Button.cpp
+
+CMakeFiles/HelloWorld.dir/src/Button.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HelloWorld.dir/src/Button.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pdenn/Code/capstone/src/Button.cpp > CMakeFiles/HelloWorld.dir/src/Button.cpp.i
+
+CMakeFiles/HelloWorld.dir/src/Button.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HelloWorld.dir/src/Button.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pdenn/Code/capstone/src/Button.cpp -o CMakeFiles/HelloWorld.dir/src/Button.cpp.s
+
+CMakeFiles/HelloWorld.dir/src/GameManager.cpp.o: CMakeFiles/HelloWorld.dir/flags.make
+CMakeFiles/HelloWorld.dir/src/GameManager.cpp.o: ../src/GameManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pdenn/Code/capstone/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/HelloWorld.dir/src/GameManager.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/HelloWorld.dir/src/GameManager.cpp.o -c /home/pdenn/Code/capstone/src/GameManager.cpp
+
+CMakeFiles/HelloWorld.dir/src/GameManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HelloWorld.dir/src/GameManager.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pdenn/Code/capstone/src/GameManager.cpp > CMakeFiles/HelloWorld.dir/src/GameManager.cpp.i
+
+CMakeFiles/HelloWorld.dir/src/GameManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HelloWorld.dir/src/GameManager.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pdenn/Code/capstone/src/GameManager.cpp -o CMakeFiles/HelloWorld.dir/src/GameManager.cpp.s
+
 CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.o: CMakeFiles/HelloWorld.dir/flags.make
 CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.o: ../src/SDLManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pdenn/Code/capstone/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pdenn/Code/capstone/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.o -c /home/pdenn/Code/capstone/src/SDLManager.cpp
 
 CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.i: cmake_force
@@ -104,7 +130,7 @@ CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.s: cmake_force
 
 CMakeFiles/HelloWorld.dir/src/main.cpp.o: CMakeFiles/HelloWorld.dir/flags.make
 CMakeFiles/HelloWorld.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pdenn/Code/capstone/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/HelloWorld.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pdenn/Code/capstone/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/HelloWorld.dir/src/main.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/HelloWorld.dir/src/main.cpp.o -c /home/pdenn/Code/capstone/src/main.cpp
 
 CMakeFiles/HelloWorld.dir/src/main.cpp.i: cmake_force
@@ -115,36 +141,25 @@ CMakeFiles/HelloWorld.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HelloWorld.dir/src/main.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pdenn/Code/capstone/src/main.cpp -o CMakeFiles/HelloWorld.dir/src/main.cpp.s
 
-CMakeFiles/HelloWorld.dir/src/test1.cpp.o: CMakeFiles/HelloWorld.dir/flags.make
-CMakeFiles/HelloWorld.dir/src/test1.cpp.o: ../src/test1.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pdenn/Code/capstone/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/HelloWorld.dir/src/test1.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/HelloWorld.dir/src/test1.cpp.o -c /home/pdenn/Code/capstone/src/test1.cpp
-
-CMakeFiles/HelloWorld.dir/src/test1.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HelloWorld.dir/src/test1.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pdenn/Code/capstone/src/test1.cpp > CMakeFiles/HelloWorld.dir/src/test1.cpp.i
-
-CMakeFiles/HelloWorld.dir/src/test1.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HelloWorld.dir/src/test1.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pdenn/Code/capstone/src/test1.cpp -o CMakeFiles/HelloWorld.dir/src/test1.cpp.s
-
 # Object files for target HelloWorld
 HelloWorld_OBJECTS = \
 "CMakeFiles/HelloWorld.dir/src/Board.cpp.o" \
+"CMakeFiles/HelloWorld.dir/src/Button.cpp.o" \
+"CMakeFiles/HelloWorld.dir/src/GameManager.cpp.o" \
 "CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.o" \
-"CMakeFiles/HelloWorld.dir/src/main.cpp.o" \
-"CMakeFiles/HelloWorld.dir/src/test1.cpp.o"
+"CMakeFiles/HelloWorld.dir/src/main.cpp.o"
 
 # External object files for target HelloWorld
 HelloWorld_EXTERNAL_OBJECTS =
 
 HelloWorld: CMakeFiles/HelloWorld.dir/src/Board.cpp.o
+HelloWorld: CMakeFiles/HelloWorld.dir/src/Button.cpp.o
+HelloWorld: CMakeFiles/HelloWorld.dir/src/GameManager.cpp.o
 HelloWorld: CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.o
 HelloWorld: CMakeFiles/HelloWorld.dir/src/main.cpp.o
-HelloWorld: CMakeFiles/HelloWorld.dir/src/test1.cpp.o
 HelloWorld: CMakeFiles/HelloWorld.dir/build.make
 HelloWorld: CMakeFiles/HelloWorld.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pdenn/Code/capstone/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable HelloWorld"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pdenn/Code/capstone/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable HelloWorld"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/HelloWorld.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

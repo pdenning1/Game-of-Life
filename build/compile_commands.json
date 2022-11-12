@@ -6,6 +6,16 @@
 },
 {
   "directory": "/home/pdenn/Code/capstone/build",
+  "command": "/usr/bin/g++  -I/usr/include/SDL2 -g   -std=c++17 -o CMakeFiles/HelloWorld.dir/src/Button.cpp.o -c /home/pdenn/Code/capstone/src/Button.cpp",
+  "file": "/home/pdenn/Code/capstone/src/Button.cpp"
+},
+{
+  "directory": "/home/pdenn/Code/capstone/build",
+  "command": "/usr/bin/g++  -I/usr/include/SDL2 -g   -std=c++17 -o CMakeFiles/HelloWorld.dir/src/GameManager.cpp.o -c /home/pdenn/Code/capstone/src/GameManager.cpp",
+  "file": "/home/pdenn/Code/capstone/src/GameManager.cpp"
+},
+{
+  "directory": "/home/pdenn/Code/capstone/build",
   "command": "/usr/bin/g++  -I/usr/include/SDL2 -g   -std=c++17 -o CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.o -c /home/pdenn/Code/capstone/src/SDLManager.cpp",
   "file": "/home/pdenn/Code/capstone/src/SDLManager.cpp"
 },
@@ -13,10 +23,5 @@
   "directory": "/home/pdenn/Code/capstone/build",
   "command": "/usr/bin/g++  -I/usr/include/SDL2 -g   -std=c++17 -o CMakeFiles/HelloWorld.dir/src/main.cpp.o -c /home/pdenn/Code/capstone/src/main.cpp",
   "file": "/home/pdenn/Code/capstone/src/main.cpp"
-},
-{
-  "directory": "/home/pdenn/Code/capstone/build",
-  "command": "/usr/bin/g++  -I/usr/include/SDL2 -g   -std=c++17 -o CMakeFiles/HelloWorld.dir/src/test1.cpp.o -c /home/pdenn/Code/capstone/src/test1.cpp",
-  "file": "/home/pdenn/Code/capstone/src/test1.cpp"
 }
 ]

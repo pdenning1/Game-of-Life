@@ -35,14 +35,16 @@ bool SDLManager::init()
 		}
 	}
 
-	_boardViewport.x = BOARD_X;
-	_boardViewport.y = BOARD_Y;
-	_boardViewport.w = BOARD_WIDTH;
-	_boardViewport.h = BOARD_HEIGHT;
+	// _boardViewport.x = BOARD_X;
+	// _boardViewport.y = BOARD_Y;
+	// _boardViewport.w = BOARD_WIDTH;
+	// _boardViewport.h = BOARD_HEIGHT;
 
 	_mouseEventX = 0;
 	_mouseEventY = 0;
 	_changeCell = false;
+
+	btnTest = new Button(20,20,50,50);
 
 	return success;
 }
@@ -84,6 +86,15 @@ void SDLManager::handleEvents()
 			int x, y;
 			SDL_GetMouseState( &x, &y );
 
+
+			if(btnTest->checkForPress(x,y))
+			{
+				if(e.type == SDL_MOUSEBUTTONUP)
+				{
+					_eventQueue.push_back(GAME_EVENT_QUIT);
+				}
+			}
+
 			//Check if mouse is in button
 			bool inside = true;
 
@@ -108,10 +119,15 @@ void SDLManager::handleEvents()
 				inside = false;
 			}
 
-			//Mouse is outside button
+			//Mouse is outside board
 			if( !inside )
 			{
 				// handle other buttons here?
+				if(e.type == SDL_MOUSEBUTTONUP)
+				{
+					_eventQueue.push_back(GAME_EVENT_RUN);
+
+				}
 			}
 			//Mouse is inside button
 			else
@@ -140,13 +156,15 @@ void SDLManager::handleEvents()
 						break;
 				}
 
-				float xpercent = x - BOARD_X;
-				xpercent = xpercent / BOARD_WIDTH;
-				_mouseEventX = xpercent * SCREEN_WIDTH * 0.7; // TODO - figure out source of .7 factor...
+				//float xpercent = x - BOARD_X;
+				//xpercent = xpercent / BOARD_WIDTH;
+				_mouseEventX = x;
+				//_mouseEventX = xpercent * SCREEN_WIDTH * 0.7; // TODO - figure out source of .7 factor...
 
-				float ypercent = y - BOARD_Y;
-				ypercent = ypercent / BOARD_HEIGHT;
-				_mouseEventY = ypercent * SCREEN_HEIGHT * 0.7;
+				//float ypercent = y - BOARD_Y;
+				//ypercent = ypercent / BOARD_HEIGHT;
+				_mouseEventY = y;
+				//_mouseEventY = ypercent * SCREEN_HEIGHT * 0.7;
 				
 
 				// _mouseEventX = ((x - BOARD_X) / BOARD_WIDTH) * SCREEN_WIDTH;
@@ -179,27 +197,32 @@ GAME_EVENTS SDLManager::getNextEvent()
 	 
 }
 
-void SDLManager::DrawBoard(Board* board)
+void SDLManager::DrawBoard(Board* board, int scalingFactor)
 {
-	int cellWidth = SCREEN_WIDTH / 25;
-	int cellHeight = SCREEN_WIDTH / 25;
+	int cellWidth = SCREEN_WIDTH / scalingFactor;
+	int cellHeight = SCREEN_WIDTH / scalingFactor;
 	int cellGap = cellWidth / 10;
 
 	int boardWidth = board->GetWidth();
 	int boardHeight = board->GetHeight();
 
-	SDL_RenderSetViewport( _renderer, &_boardViewport );
+	//SDL_RenderSetViewport( _renderer, &_boardViewport );
 
 	//Clear screen
 	//SDL_SetRenderDrawColor( _renderer, 0xFF, 0xFF, 0xFF, 0xFF );
 	//SDL_RenderClear( _renderer );
 
+	int startingX = (BOARD_X + (BOARD_WIDTH - (boardWidth * (cellWidth + cellGap))) / 2);
+	//int startingX = (SCREEN_WIDTH - (boardWidth * (cellWidth + cellGap))) / 4;
+	int startingY = (BOARD_Y + (BOARD_HEIGHT - (boardHeight * (cellHeight + cellGap))) / 2);
+	//int startingY = (SCREEN_HEIGHT - (boardHeight * (cellHeight + cellGap))) / 4;
+
 	for (int i = 0; i < boardWidth; i++)
 	{
 		for ( int j = 0; j < boardHeight; j++)
 		{
-			int xPos = (cellWidth + cellGap) * i; 
-			int yPos = (cellHeight + cellGap) * j;
+			int xPos = startingX + ((cellWidth + cellGap) * i); 
+			int yPos = startingY + ((cellHeight + cellGap) * j);
 			bool mouseOver = false;
 
 			if (_mouseEventX > xPos)
@@ -291,6 +314,8 @@ void SDLManager::DrawFrame()
 
 	//Update screen
 	SDL_RenderPresent( _renderer );
+
+	btnTest->render(_renderer);
 }
 
 

@@ -169,6 +169,60 @@ src/Board.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/Board.cpp.s
 .PHONY : src/Board.cpp.s
 
+src/Button.o: src/Button.cpp.o
+
+.PHONY : src/Button.o
+
+# target to build an object file
+src/Button.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/Button.cpp.o
+.PHONY : src/Button.cpp.o
+
+src/Button.i: src/Button.cpp.i
+
+.PHONY : src/Button.i
+
+# target to preprocess a source file
+src/Button.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/Button.cpp.i
+.PHONY : src/Button.cpp.i
+
+src/Button.s: src/Button.cpp.s
+
+.PHONY : src/Button.s
+
+# target to generate assembly for a file
+src/Button.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/Button.cpp.s
+.PHONY : src/Button.cpp.s
+
+src/GameManager.o: src/GameManager.cpp.o
+
+.PHONY : src/GameManager.o
+
+# target to build an object file
+src/GameManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/GameManager.cpp.o
+.PHONY : src/GameManager.cpp.o
+
+src/GameManager.i: src/GameManager.cpp.i
+
+.PHONY : src/GameManager.i
+
+# target to preprocess a source file
+src/GameManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/GameManager.cpp.i
+.PHONY : src/GameManager.cpp.i
+
+src/GameManager.s: src/GameManager.cpp.s
+
+.PHONY : src/GameManager.s
+
+# target to generate assembly for a file
+src/GameManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/GameManager.cpp.s
+.PHONY : src/GameManager.cpp.s
+
 src/SDLManager.o: src/SDLManager.cpp.o
 
 .PHONY : src/SDLManager.o
@@ -223,33 +277,6 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/test1.o: src/test1.cpp.o
-
-.PHONY : src/test1.o
-
-# target to build an object file
-src/test1.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/test1.cpp.o
-.PHONY : src/test1.cpp.o
-
-src/test1.i: src/test1.cpp.i
-
-.PHONY : src/test1.i
-
-# target to preprocess a source file
-src/test1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/test1.cpp.i
-.PHONY : src/test1.cpp.i
-
-src/test1.s: src/test1.cpp.s
-
-.PHONY : src/test1.s
-
-# target to generate assembly for a file
-src/test1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/src/test1.cpp.s
-.PHONY : src/test1.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -262,15 +289,18 @@ help:
 	@echo "... src/Board.o"
 	@echo "... src/Board.i"
 	@echo "... src/Board.s"
+	@echo "... src/Button.o"
+	@echo "... src/Button.i"
+	@echo "... src/Button.s"
+	@echo "... src/GameManager.o"
+	@echo "... src/GameManager.i"
+	@echo "... src/GameManager.s"
 	@echo "... src/SDLManager.o"
 	@echo "... src/SDLManager.i"
 	@echo "... src/SDLManager.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/test1.o"
-	@echo "... src/test1.i"
-	@echo "... src/test1.s"
 .PHONY : help
 
 

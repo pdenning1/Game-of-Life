@@ -4,17 +4,26 @@
 CMakeFiles/HelloWorld.dir/src/Board.cpp.o: ../src/Board.cpp
 CMakeFiles/HelloWorld.dir/src/Board.cpp.o: ../src/Board.h
 
+CMakeFiles/HelloWorld.dir/src/Button.cpp.o: ../src/Button.cpp
+CMakeFiles/HelloWorld.dir/src/Button.cpp.o: ../src/Button.h
+
+CMakeFiles/HelloWorld.dir/src/GameManager.cpp.o: ../src/Board.h
+CMakeFiles/HelloWorld.dir/src/GameManager.cpp.o: ../src/Button.h
+CMakeFiles/HelloWorld.dir/src/GameManager.cpp.o: ../src/Constants.h
+CMakeFiles/HelloWorld.dir/src/GameManager.cpp.o: ../src/GameManager.cpp
+CMakeFiles/HelloWorld.dir/src/GameManager.cpp.o: ../src/GameManager.h
+CMakeFiles/HelloWorld.dir/src/GameManager.cpp.o: ../src/SDLManager.h
+
 CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.o: ../src/Board.h
+CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.o: ../src/Button.h
 CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.o: ../src/Constants.h
 CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.o: ../src/SDLManager.cpp
 CMakeFiles/HelloWorld.dir/src/SDLManager.cpp.o: ../src/SDLManager.h
 
 CMakeFiles/HelloWorld.dir/src/main.cpp.o: ../src/Board.h
+CMakeFiles/HelloWorld.dir/src/main.cpp.o: ../src/Button.h
 CMakeFiles/HelloWorld.dir/src/main.cpp.o: ../src/Constants.h
+CMakeFiles/HelloWorld.dir/src/main.cpp.o: ../src/GameManager.h
 CMakeFiles/HelloWorld.dir/src/main.cpp.o: ../src/SDLManager.h
 CMakeFiles/HelloWorld.dir/src/main.cpp.o: ../src/main.cpp
-CMakeFiles/HelloWorld.dir/src/main.cpp.o: ../src/test1.h
-
-CMakeFiles/HelloWorld.dir/src/test1.cpp.o: ../src/test1.cpp
-CMakeFiles/HelloWorld.dir/src/test1.cpp.o: ../src/test1.h
 
