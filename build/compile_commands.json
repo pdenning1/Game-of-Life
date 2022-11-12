@@ -21,6 +21,11 @@
 },
 {
   "directory": "/home/pdenn/Code/capstone/build",
+  "command": "/usr/bin/g++  -I/usr/include/SDL2 -g   -std=c++17 -o CMakeFiles/GameOfLife.dir/src/SaveFileManager.cpp.o -c /home/pdenn/Code/capstone/src/SaveFileManager.cpp",
+  "file": "/home/pdenn/Code/capstone/src/SaveFileManager.cpp"
+},
+{
+  "directory": "/home/pdenn/Code/capstone/build",
   "command": "/usr/bin/g++  -I/usr/include/SDL2 -g   -std=c++17 -o CMakeFiles/GameOfLife.dir/src/main.cpp.o -c /home/pdenn/Code/capstone/src/main.cpp",
   "file": "/home/pdenn/Code/capstone/src/main.cpp"
 }

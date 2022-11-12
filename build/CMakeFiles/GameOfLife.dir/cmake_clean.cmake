@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/GameOfLife.dir/src/Button.cpp.o"
   "CMakeFiles/GameOfLife.dir/src/GameManager.cpp.o"
   "CMakeFiles/GameOfLife.dir/src/SDLManager.cpp.o"
+  "CMakeFiles/GameOfLife.dir/src/SaveFileManager.cpp.o"
   "CMakeFiles/GameOfLife.dir/src/main.cpp.o"
   "GameOfLife"
   "GameOfLife.pdb"

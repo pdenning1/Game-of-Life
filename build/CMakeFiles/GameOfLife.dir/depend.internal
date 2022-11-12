@@ -20,10 +20,14 @@ CMakeFiles/GameOfLife.dir/src/SDLManager.cpp.o
  /home/pdenn/Code/capstone/src/Constants.h
  /home/pdenn/Code/capstone/src/SDLManager.cpp
  /home/pdenn/Code/capstone/src/SDLManager.h
+CMakeFiles/GameOfLife.dir/src/SaveFileManager.cpp.o
+ /home/pdenn/Code/capstone/src/SaveFileManager.cpp
+ /home/pdenn/Code/capstone/src/SaveFileManager.h
 CMakeFiles/GameOfLife.dir/src/main.cpp.o
  /home/pdenn/Code/capstone/src/Board.h
  /home/pdenn/Code/capstone/src/Button.h
  /home/pdenn/Code/capstone/src/Constants.h
  /home/pdenn/Code/capstone/src/GameManager.h
  /home/pdenn/Code/capstone/src/SDLManager.h
+ /home/pdenn/Code/capstone/src/SaveFileManager.h
  /home/pdenn/Code/capstone/src/main.cpp

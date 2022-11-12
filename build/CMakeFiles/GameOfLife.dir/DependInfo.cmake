@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/pdenn/Code/capstone/src/Button.cpp" "/home/pdenn/Code/capstone/build/CMakeFiles/GameOfLife.dir/src/Button.cpp.o"
   "/home/pdenn/Code/capstone/src/GameManager.cpp" "/home/pdenn/Code/capstone/build/CMakeFiles/GameOfLife.dir/src/GameManager.cpp.o"
   "/home/pdenn/Code/capstone/src/SDLManager.cpp" "/home/pdenn/Code/capstone/build/CMakeFiles/GameOfLife.dir/src/SDLManager.cpp.o"
+  "/home/pdenn/Code/capstone/src/SaveFileManager.cpp" "/home/pdenn/Code/capstone/build/CMakeFiles/GameOfLife.dir/src/SaveFileManager.cpp.o"
   "/home/pdenn/Code/capstone/src/main.cpp" "/home/pdenn/Code/capstone/build/CMakeFiles/GameOfLife.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

@@ -20,10 +20,14 @@ CMakeFiles/GameOfLife.dir/src/SDLManager.cpp.o: ../src/Constants.h
 CMakeFiles/GameOfLife.dir/src/SDLManager.cpp.o: ../src/SDLManager.cpp
 CMakeFiles/GameOfLife.dir/src/SDLManager.cpp.o: ../src/SDLManager.h
 
+CMakeFiles/GameOfLife.dir/src/SaveFileManager.cpp.o: ../src/SaveFileManager.cpp
+CMakeFiles/GameOfLife.dir/src/SaveFileManager.cpp.o: ../src/SaveFileManager.h
+
 CMakeFiles/GameOfLife.dir/src/main.cpp.o: ../src/Board.h
 CMakeFiles/GameOfLife.dir/src/main.cpp.o: ../src/Button.h
 CMakeFiles/GameOfLife.dir/src/main.cpp.o: ../src/Constants.h
 CMakeFiles/GameOfLife.dir/src/main.cpp.o: ../src/GameManager.h
 CMakeFiles/GameOfLife.dir/src/main.cpp.o: ../src/SDLManager.h
+CMakeFiles/GameOfLife.dir/src/main.cpp.o: ../src/SaveFileManager.h
 CMakeFiles/GameOfLife.dir/src/main.cpp.o: ../src/main.cpp
 

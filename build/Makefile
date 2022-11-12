@@ -250,6 +250,33 @@ src/SDLManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/SDLManager.cpp.s
 .PHONY : src/SDLManager.cpp.s
 
+src/SaveFileManager.o: src/SaveFileManager.cpp.o
+
+.PHONY : src/SaveFileManager.o
+
+# target to build an object file
+src/SaveFileManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/SaveFileManager.cpp.o
+.PHONY : src/SaveFileManager.cpp.o
+
+src/SaveFileManager.i: src/SaveFileManager.cpp.i
+
+.PHONY : src/SaveFileManager.i
+
+# target to preprocess a source file
+src/SaveFileManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/SaveFileManager.cpp.i
+.PHONY : src/SaveFileManager.cpp.i
+
+src/SaveFileManager.s: src/SaveFileManager.cpp.s
+
+.PHONY : src/SaveFileManager.s
+
+# target to generate assembly for a file
+src/SaveFileManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameOfLife.dir/build.make CMakeFiles/GameOfLife.dir/src/SaveFileManager.cpp.s
+.PHONY : src/SaveFileManager.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -298,6 +325,9 @@ help:
 	@echo "... src/SDLManager.o"
 	@echo "... src/SDLManager.i"
 	@echo "... src/SDLManager.s"
+	@echo "... src/SaveFileManager.o"
+	@echo "... src/SaveFileManager.i"
+	@echo "... src/SaveFileManager.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

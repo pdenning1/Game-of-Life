@@ -3,7 +3,7 @@
 // project includes
 #include "GameManager.h"
 
-
+#include "SaveFileManager.h"
 
 
 int main() {
@@ -12,6 +12,12 @@ int main() {
 	bool quit = false;
 
 	theGameManager.init();
+
+	///////////////
+	SaveFileManager save;
+	save.loadBoardLayout();
+
+	//////////////
 
 
 	while(!quit)
