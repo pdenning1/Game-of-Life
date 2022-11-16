@@ -4,6 +4,7 @@
 
 
 #include "SDLManager.h"
+#include "SaveFileManager.h"
 #include "Board.h"
 #include "Constants.h"
 
@@ -27,7 +28,7 @@ private:
     void iterateBoard();
 
     SDLManager* _sdlManager;
-    // SaveFileManager* _saveFileManager;
+    SaveFileManager* _saveFileManager;
 
     Board* _currentBoard;
     Board* _nextBoard;

@@ -12,6 +12,7 @@ GameManager::GameManager()
     _nextBoard = nullptr;
 
     _sdlManager = new SDLManager();
+    _saveFileManager = new SaveFileManager();
 
     std::cout << "Starting Game..." << std::endl;
 
@@ -59,6 +60,13 @@ bool GameManager::init()
     }
 
 	_sdlManager->DrawFrame(); // render the graphics that won't change thoughout the game (background etc)
+
+    std::vector<Coordinates>* boardCoords = _saveFileManager->loadBoardLayout();
+
+    for(auto coord : *boardCoords)
+    {
+        std::cout << coord.x << " " << coord.y << std::endl;
+    }
 
     return _sdlInitialized;
 

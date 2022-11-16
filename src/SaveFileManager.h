@@ -5,14 +5,19 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
+
+#include "Coordinates.h"
 
 const std::string saveFileName{"savefile.txt"};
+
 
 class SaveFileManager
 {
 
 public:
-    std::string loadBoardLayout();
+    std::vector<Coordinates>* loadBoardLayout();
+    bool saveBoardLayout(std::vector<Coordinates>* board);
 
 private:
 

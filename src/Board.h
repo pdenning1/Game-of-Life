@@ -3,6 +3,8 @@
 #include <vector>
 #include <iostream>
 
+#include "Coordinates.h"
+
 
 class Board
 {
@@ -16,6 +18,8 @@ public:
     bool GetCellState(int i, int j) { return _board[i][j]; }
     void SetCellState( int i, int j, bool state) { _board[i][j] = state; }
     void ChangeCell(int i, int j) { _board[i][j] = !_board[i][j]; }
+
+    std::vector<Coordinates>* geBoardLayout(); 
 
 private:
     std::vector<std::vector<bool>> _board;
