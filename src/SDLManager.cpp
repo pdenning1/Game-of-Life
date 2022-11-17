@@ -132,20 +132,14 @@ void SDLManager::handleEvents()
 				{
 					case SDL_MOUSEMOTION:
 						// handle cell selection here
-						std::cout << "Mouse moving over board" << std::endl;
-						std::cout << "X: " << x << "     Y: " << y << std::endl;
 						break;
 					
 					case SDL_MOUSEBUTTONDOWN:
 						// handle mouse pressed here		
-						std::cout << "Mouse pressed" << std::endl;
-						std::cout << "X: " << x << "     Y: " << y << std::endl;
 						break;
 					
 					case SDL_MOUSEBUTTONUP:
 						// handle mouse released here		
-						std::cout << "Mouse released" << std::endl;
-						std::cout << "X: " << x << "     Y: " << y << std::endl;
 						_eventQueue.push_back(GAME_EVENT_CELL_CHANGE);
 						_changeCell = true;
 						break;
@@ -153,8 +147,6 @@ void SDLManager::handleEvents()
 
 				_mouseEventX = x;
 				_mouseEventY = y;
-
-				std::cout << "boardX: " << _mouseEventX << "     boardY: " << _mouseEventY << std::endl;
 			}
 		}
 

@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/pdenn/Code/capstone/src/Board.cpp
-Board.h
-/home/pdenn/Code/capstone/src/Board.h
-
 /home/pdenn/Code/capstone/src/Board.h
 vector
 -
@@ -29,22 +25,6 @@ SDL2/SDL.h
 /home/pdenn/Code/capstone/src/Constants.h
 
 /home/pdenn/Code/capstone/src/Coordinates.h
-
-/home/pdenn/Code/capstone/src/GameManager.cpp
-GameManager.h
-/home/pdenn/Code/capstone/src/GameManager.h
-
-/home/pdenn/Code/capstone/src/GameManager.h
-iostream
--
-SDLManager.h
-/home/pdenn/Code/capstone/src/SDLManager.h
-SaveFileManager.h
-/home/pdenn/Code/capstone/src/SaveFileManager.h
-Board.h
-/home/pdenn/Code/capstone/src/Board.h
-Constants.h
-/home/pdenn/Code/capstone/src/Constants.h
 
 /home/pdenn/Code/capstone/src/SDLManager.cpp
 SDLManager.h
@@ -65,32 +45,4 @@ Board.h
 /home/pdenn/Code/capstone/src/Board.h
 Button.h
 /home/pdenn/Code/capstone/src/Button.h
-
-/home/pdenn/Code/capstone/src/SaveFileManager.cpp
-SaveFileManager.h
-/home/pdenn/Code/capstone/src/SaveFileManager.h
-
-/home/pdenn/Code/capstone/src/SaveFileManager.h
-sstream
--
-fstream
--
-iostream
--
-string
--
-vector
--
-algorithm
--
-Coordinates.h
-/home/pdenn/Code/capstone/src/Coordinates.h
-
-/home/pdenn/Code/capstone/src/main.cpp
-iostream
--
-GameManager.h
-/home/pdenn/Code/capstone/src/GameManager.h
-SaveFileManager.h
-/home/pdenn/Code/capstone/src/SaveFileManager.h
 

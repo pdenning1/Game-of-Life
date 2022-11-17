@@ -95,6 +95,17 @@ bool GameManager::handleInput()
         else if (event == GAME_EVENT_RUN)
         {
             _running = !_running;
+
+            // TODO - remove testing
+            std::vector<Coordinates>*  layout = _currentBoard->geBoardLayout();
+
+            std::cout << "layout:" << std::endl;
+            for (auto coord : *layout)
+            {
+                std:: cout << coord.x << " " << coord.y << std::endl;
+            }
+            std::cout << "end of layout" << std::endl;
+            //////
         }
 
     }
