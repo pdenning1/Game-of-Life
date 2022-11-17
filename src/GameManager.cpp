@@ -8,7 +8,8 @@ GameManager::GameManager()
     _running = false;
     _sdlInitialized = false;
 
-    _currentBoard = new Board(20,20); // TODO - sort sizing...
+    _boardSize = MEDIUM;
+    _currentBoard = new Board(BOARDWIDTH_MED, BOARDHEIGHT_MED);
     _nextBoard = nullptr;
 
     _sdlManager = new SDLManager();
@@ -61,12 +62,14 @@ bool GameManager::init()
 
 	_sdlManager->DrawFrame(); // render the graphics that won't change thoughout the game (background etc)
 
-    std::vector<Coordinates>* boardCoords = _saveFileManager->loadBoardLayout();
+    std::vector<Coordinates>* boardCoords = _saveFileManager->loadSavedLayout();
 
     for(auto coord : *boardCoords)
     {
         std::cout << coord.x << " " << coord.y << std::endl;
     }
+
+    _currentBoard->loadBoardLayout(boardCoords);
 
     return _sdlInitialized;
 
@@ -78,7 +81,7 @@ bool GameManager::handleInput()
     _sdlManager->handleEvents(); // tell the sdlManager to process any SDL_events
 
     
-    if (_sdlManager->isEvents()) // any sdl_events that trigger game_events are handled by the GameManager heres
+    if (_sdlManager->isEvents()) // any sdl_events that trigger game_events are handled by the GameManager here
     {
         GAME_EVENTS event = _sdlManager->getNextEvent();
 
@@ -95,17 +98,18 @@ bool GameManager::handleInput()
         else if (event == GAME_EVENT_RUN)
         {
             _running = !_running;
+        }
 
-            // TODO - remove testing
-            std::vector<Coordinates>*  layout = _currentBoard->geBoardLayout();
+        else if (event == GAME_EVENT_INCREASESIZE)
+        {
+            increaseBoardSize();
+            _sdlManager->DrawBoard(_currentBoard);
+        }
 
-            std::cout << "layout:" << std::endl;
-            for (auto coord : *layout)
-            {
-                std:: cout << coord.x << " " << coord.y << std::endl;
-            }
-            std::cout << "end of layout" << std::endl;
-            //////
+        else if (event == GAME_EVENT_DECREASESIZE)
+        {
+            decreaseBoardSize();
+            _sdlManager->DrawBoard(_currentBoard);
         }
 
     }
@@ -121,13 +125,12 @@ void GameManager::updateGameState()
         this->iterateBoard();
 
         SDL_Delay(750); // TODO - implement timer / threading so that ui remains responsive
-
     }
 }
 
 void GameManager::render()
 {
-    _sdlManager->DrawBoard(_currentBoard, 60);
+    _sdlManager->DrawBoard(_currentBoard);
 }
 
 
@@ -181,4 +184,53 @@ void GameManager::iterateBoard()
     delete _currentBoard;
     _currentBoard = _nextBoard;
     _nextBoard = nullptr;
+}
+
+bool GameManager::saveGameState()
+{
+    return _saveFileManager->saveBoardLayout(_currentBoard->getBoardLayout());
+}
+
+void GameManager::increaseBoardSize()
+{
+    if (_boardSize == SMALL)
+    {
+        _boardSize = MEDIUM;
+        std::vector<Coordinates>* layout = _currentBoard->getBoardLayout();
+        delete _currentBoard;
+        _currentBoard = new Board(BOARDWIDTH_MED, BOARDHEIGHT_MED);
+        _currentBoard->loadBoardLayout(layout);
+        delete layout;
+    }
+    else if (_boardSize == MEDIUM)
+    {
+        _boardSize = LARGE;
+        std::vector<Coordinates>* layout = _currentBoard->getBoardLayout();
+        delete _currentBoard;
+        _currentBoard = new Board(BOARDWIDTH_LARGE, BOARDHEIGHT_LARGE);
+        _currentBoard->loadBoardLayout(layout);
+        delete layout;
+    }
+}
+
+void GameManager::decreaseBoardSize()
+{
+    if (_boardSize == LARGE)
+    {
+        _boardSize = MEDIUM;
+        std::vector<Coordinates>* layout = _currentBoard->getBoardLayout();
+        delete _currentBoard;
+        _currentBoard = new Board(BOARDWIDTH_MED, BOARDHEIGHT_MED);
+        _currentBoard->loadBoardLayout(layout);
+        delete layout;
+    }
+    else if (_boardSize == MEDIUM)
+    {
+        _boardSize = SMALL;
+        std::vector<Coordinates>* layout = _currentBoard->getBoardLayout();
+        delete _currentBoard;
+        _currentBoard = new Board(BOARDWIDTH_SMALL, BOARDHEIGHT_SMALL);
+        _currentBoard->loadBoardLayout(layout);
+        delete layout;
+    }
 }

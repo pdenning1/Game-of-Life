@@ -1,6 +1,16 @@
 #include "SDLManager.h"
 
 
+
+SDLManager::~SDLManager()
+{ 
+	std::cout << "Destroying SDLManager" << std::endl; 
+	for (auto button : _buttons)
+	{
+		delete button;
+	}
+}
+
 bool SDLManager::init()
 {
 	//Initialization flag
@@ -39,7 +49,11 @@ bool SDLManager::init()
 	_mouseEventY = 0;
 	_changeCell = false;
 
-	btnTest = new Button(20,20,50,50);
+	addButton(20,20,50,50, GAME_EVENT_QUIT);
+
+	addButton(400, 30, 50, 50, GAME_EVENT_INCREASESIZE);
+	addButton(500, 30, 50, 50, GAME_EVENT_DECREASESIZE);
+	addButton((SCREEN_WIDTH / 2) - 20, BOARD_Y + BOARD_HEIGHT + 50, 100, 50, GAME_EVENT_RUN);
 
 	return success;
 }
@@ -75,79 +89,62 @@ void SDLManager::handleEvents()
 		}
 
 			//If mouse event happened
-		if( e.type == SDL_MOUSEMOTION || e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP )
+		if( e.type == SDL_MOUSEBUTTONUP )
 		{
 			//Get mouse position
 			int x, y;
 			SDL_GetMouseState( &x, &y );
 
-
-			if(btnTest->checkForPress(x,y))
+			for (auto button : _buttons)
 			{
-				if(e.type == SDL_MOUSEBUTTONUP)
+				if(button->checkForPress(x,y))
 				{
-					_eventQueue.push_back(GAME_EVENT_QUIT);
+					_eventQueue.push_back(button->getEvent());
+
 				}
 			}
 
-			//Check if mouse is in button
+			//Check if mouse is in board
 			bool inside = true;
 
-			//Mouse is left of the button
+			//Mouse is left of the board
 			if( x < BOARD_X )
 			{
 				inside = false;
 			}
-			//Mouse is right of the button
+			//Mouse is right of the board
 			else if( x > BOARD_X + BOARD_WIDTH )
 			{
 				inside = false;
 			}
-			//Mouse above the button
+			//Mouse above the board
 			else if( y < BOARD_Y )
 			{
 				inside = false;
 			}
-			//Mouse below the button
+			//Mouse below the board
 			else if( y > BOARD_Y + BOARD_HEIGHT )
 			{
 				inside = false;
 			}
 
-			//Mouse is outside board
-			if( !inside )
+			//Mouse is inside board
+			if( inside )
 			{
-				// handle other buttons here?
-				if(e.type == SDL_MOUSEBUTTONUP)
-				{
-					_eventQueue.push_back(GAME_EVENT_RUN);
-
-				}
-			}
-			//Mouse is inside button
-			else
-			{
-				//Set mouse over sprite
-				switch( e.type )
-				{
-					case SDL_MOUSEMOTION:
-						// handle cell selection here
-						break;
-					
-					case SDL_MOUSEBUTTONDOWN:
-						// handle mouse pressed here		
-						break;
-					
-					case SDL_MOUSEBUTTONUP:
-						// handle mouse released here		
-						_eventQueue.push_back(GAME_EVENT_CELL_CHANGE);
-						_changeCell = true;
-						break;
-				}
+				_eventQueue.push_back(GAME_EVENT_CELL_CHANGE);
+				_changeCell = true;
 
 				_mouseEventX = x;
 				_mouseEventY = y;
 			}
+		}
+		else if (e.type == SDL_MOUSEMOTION)
+		{
+			int x, y;
+			SDL_GetMouseState( &x, &y );
+
+			_mouseEventX = x;
+			_mouseEventY = y;
 		}
 
 	}
@@ -171,25 +168,23 @@ GAME_EVENTS SDLManager::getNextEvent()
 	 
 }
 
-void SDLManager::DrawBoard(Board* board, int scalingFactor)
+void SDLManager::DrawBoard(Board* board)
 {
-	int cellWidth = SCREEN_WIDTH / scalingFactor;
-	int cellHeight = SCREEN_WIDTH / scalingFactor;
-	int cellGap = cellWidth / 10;
-
 	int boardWidth = board->GetWidth();
 	int boardHeight = board->GetHeight();
 
-	//SDL_RenderSetViewport( _renderer, &_boardViewport );
+	int cellGap = (BOARD_WIDTH / boardWidth) / 10;
+	int cellWidth = (BOARD_WIDTH / boardWidth) - cellGap;
+	int cellHeight = (BOARD_HEIGHT / boardHeight) - cellGap;
+	
 
-	//Clear screen
-	//SDL_SetRenderDrawColor( _renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-	//SDL_RenderClear( _renderer );
+	//Clear board
+	SDL_Rect fillRect = { BOARD_X, BOARD_Y, BOARD_WIDTH, BOARD_HEIGHT };
+	SDL_SetRenderDrawColor( _renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+	SDL_RenderFillRect( _renderer, &fillRect );
 
 	int startingX = (BOARD_X + (BOARD_WIDTH - (boardWidth * (cellWidth + cellGap))) / 2);
-	//int startingX = (SCREEN_WIDTH - (boardWidth * (cellWidth + cellGap))) / 4;
 	int startingY = (BOARD_Y + (BOARD_HEIGHT - (boardHeight * (cellHeight + cellGap))) / 2);
-	//int startingY = (SCREEN_HEIGHT - (boardHeight * (cellHeight + cellGap))) / 4;
 
 	for (int i = 0; i < boardWidth; i++)
 	{
@@ -222,16 +217,16 @@ void SDLManager::DrawBoard(Board* board, int scalingFactor)
 			if(!board->GetCellState(i,j))
 			{
 				//Render grey filled quad
-				SDL_Rect fillRect = { xPos, yPos, cellWidth, cellHeight };
+				SDL_Rect cellRect = { xPos, yPos, cellWidth, cellHeight };
 				SDL_SetRenderDrawColor( _renderer, 0x96, 0x96, 0x96, 0xFF );		
-				SDL_RenderFillRect( _renderer, &fillRect );
+				SDL_RenderFillRect( _renderer, &cellRect );
 			}
 			else
 			{
 				//Render red filled quad
-				SDL_Rect fillRect = { xPos, yPos, cellWidth, cellHeight };
+				SDL_Rect cellRect = { xPos, yPos, cellWidth, cellHeight };
 				SDL_SetRenderDrawColor( _renderer, 0x84, 0x02, 0x10, 0xFF );		
-				SDL_RenderFillRect( _renderer, &fillRect );
+				SDL_RenderFillRect( _renderer, &cellRect );
 			}
 
 			if(mouseOver)
@@ -251,28 +246,14 @@ void SDLManager::DrawBoard(Board* board, int scalingFactor)
 		}
 	}
 
-
-
-
-	// //Render red filled quad
-	// SDL_Rect fillRect = { SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
-	// SDL_SetRenderDrawColor( _renderer, 0xFF, 0x00, 0x00, 0xFF );		
-	// SDL_RenderFillRect( _renderer, &fillRect );
-
-	
-	// //Draw blue horizontal line
-	// SDL_SetRenderDrawColor( _renderer, 0x00, 0x00, 0xFF, 0xFF );		
-	// SDL_RenderDrawLine( _renderer, 0, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT / 2 );
-
-	// //Draw vertical line of yellow dots
-	// SDL_SetRenderDrawColor( _renderer, 0xFF, 0xFF, 0x00, 0xFF );
-	// for( int i = 0; i < SCREEN_HEIGHT; i += 4 )
-	// {
-	// 	SDL_RenderDrawPoint( _renderer, SCREEN_WIDTH / 2, i );
-	// }
-
 	//Update screen
 	SDL_RenderPresent( _renderer );	
+}
+
+void SDLManager::addButton(int x, int y, int width, int height, GAME_EVENTS event)
+{
+	Button* button = new Button(x, y, width, height, event);
+	_buttons.push_back(button);
 }
 
 void SDLManager::DrawFrame()
@@ -289,7 +270,10 @@ void SDLManager::DrawFrame()
 	//Update screen
 	SDL_RenderPresent( _renderer );
 
-	btnTest->render(_renderer);
+	for(auto button : _buttons)
+	{
+		button->render(_renderer);
+	}
 }
 
 

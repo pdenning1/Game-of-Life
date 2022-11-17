@@ -13,12 +13,6 @@ int main() {
 
 	theGameManager.init();
 
-	///////////////
-	SaveFileManager save;
-	save.loadBoardLayout();
-
-	//////////////
-
 
 	while(!quit)
 	{
@@ -29,6 +23,8 @@ int main() {
 		theGameManager.render();
 
 	}
+
+	theGameManager.saveGameState();
 
     return 0;
 }

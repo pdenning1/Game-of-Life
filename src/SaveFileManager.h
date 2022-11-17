@@ -14,12 +14,7 @@ const std::string saveFileName{"savefile.txt"};
 
 class SaveFileManager
 {
-
 public:
-    std::vector<Coordinates>* loadBoardLayout();
-    bool saveBoardLayout(std::vector<Coordinates>* board);
-
-private:
-
-
+    std::vector<Coordinates>* loadSavedLayout();
+    bool saveBoardLayout(std::vector<Coordinates>* boardLayout);
 };

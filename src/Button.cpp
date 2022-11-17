@@ -7,10 +7,11 @@ Button::Button()
     _yPosition = 0;
     _width = 0;
     _height = 0;
+    _clickEvent = GAME_EVENT_NO_EVENT;
 }
 
-Button::Button(int x, int y, int width, int height) :
-    _xPosition(x), _yPosition(y), _width(width), _height(height)
+Button::Button(int x, int y, int width, int height, GAME_EVENTS event) :
+    _xPosition(x), _yPosition(y), _width(width), _height(height), _clickEvent(event)
 {
 
 }

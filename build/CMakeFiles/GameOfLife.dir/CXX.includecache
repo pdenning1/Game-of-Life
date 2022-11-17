@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/pdenn/Code/capstone/src/Board.cpp
+Board.h
+/home/pdenn/Code/capstone/src/Board.h
+
 /home/pdenn/Code/capstone/src/Board.h
 vector
 -
@@ -14,35 +18,5 @@ iostream
 Coordinates.h
 /home/pdenn/Code/capstone/src/Coordinates.h
 
-/home/pdenn/Code/capstone/src/Button.h
-cstdio
--
-iostream
--
-SDL2/SDL.h
--
-
-/home/pdenn/Code/capstone/src/Constants.h
-
 /home/pdenn/Code/capstone/src/Coordinates.h
-
-/home/pdenn/Code/capstone/src/SDLManager.cpp
-SDLManager.h
-/home/pdenn/Code/capstone/src/SDLManager.h
-
-/home/pdenn/Code/capstone/src/SDLManager.h
-cstdio
--
-iostream
--
-SDL2/SDL.h
--
-vector
--
-Constants.h
-/home/pdenn/Code/capstone/src/Constants.h
-Board.h
-/home/pdenn/Code/capstone/src/Board.h
-Button.h
-/home/pdenn/Code/capstone/src/Button.h
 

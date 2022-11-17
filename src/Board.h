@@ -19,7 +19,8 @@ public:
     void SetCellState( int i, int j, bool state) { _board[i][j] = state; }
     void ChangeCell(int i, int j) { _board[i][j] = !_board[i][j]; }
 
-    std::vector<Coordinates>* geBoardLayout(); 
+    std::vector<Coordinates>* getBoardLayout();
+    void loadBoardLayout(std::vector<Coordinates>* layout);
 
 private:
     std::vector<std::vector<bool>> _board;

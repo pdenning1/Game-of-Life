@@ -42,7 +42,7 @@ int Board::GetHeight()
     return _height;
 }
 
-std::vector<Coordinates>* Board::geBoardLayout()
+std::vector<Coordinates>* Board::getBoardLayout()
 {
     std::vector<Coordinates>* boardLayout = new std::vector<Coordinates>();
     for (int i = 0; i < _width; i++)
@@ -61,4 +61,15 @@ std::vector<Coordinates>* Board::geBoardLayout()
     }
 
     return boardLayout;
+}
+
+void Board::loadBoardLayout(std::vector<Coordinates>* layout)
+{
+    for (auto coord : *layout)
+    {
+        if (((coord.x + _xOffset) < _width) && ((coord.y + _yOffset) < _height))
+        {
+            _board[coord.x + _xOffset][coord.y + _yOffset] = true;
+        }
+    }
 }

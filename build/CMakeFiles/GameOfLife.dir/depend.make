@@ -7,6 +7,7 @@ CMakeFiles/GameOfLife.dir/src/Board.cpp.o: ../src/Coordinates.h
 
 CMakeFiles/GameOfLife.dir/src/Button.cpp.o: ../src/Button.cpp
 CMakeFiles/GameOfLife.dir/src/Button.cpp.o: ../src/Button.h
+CMakeFiles/GameOfLife.dir/src/Button.cpp.o: ../src/Constants.h
 
 CMakeFiles/GameOfLife.dir/src/GameManager.cpp.o: ../src/Board.h
 CMakeFiles/GameOfLife.dir/src/GameManager.cpp.o: ../src/Button.h

@@ -2,7 +2,7 @@
 
 /// @brief Load the board from savefile.txt in the build folder. NOTE: for now this function assumes the savefile is in perfect format
 /// @return 
-std::vector<Coordinates>* SaveFileManager::loadBoardLayout()
+std::vector<Coordinates>* SaveFileManager::loadSavedLayout()
 {
     std::string json = "";
     std::string line;
@@ -40,4 +40,36 @@ std::vector<Coordinates>* SaveFileManager::loadBoardLayout()
     }
 
     return coords;
+}
+
+/// @brief Save the current board layout as a json array in savefile.txt
+/// @param boardLayout 
+/// @return Save successful or not
+bool SaveFileManager::saveBoardLayout(std::vector<Coordinates>* boardLayout)
+{
+    int numCoords = boardLayout->size();
+
+    std::ostringstream jsonStream;
+    jsonStream <<  "[";
+
+    for (int i = 0; i < numCoords; i++)
+    {
+        jsonStream << "[" << boardLayout->at(i).x << "," << boardLayout->at(i).y <<  "]";
+
+        if (i < numCoords)
+        {
+            jsonStream << ",";
+        }
+    }
+
+    std::ofstream filestream;
+    filestream.open("savefile.txt", std::ofstream::out | std::ofstream::trunc);
+    if (filestream.is_open())
+    {
+        filestream << jsonStream.str();
+
+        return true;
+    }
+
+    return false;
 }
