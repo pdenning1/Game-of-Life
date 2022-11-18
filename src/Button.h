@@ -16,6 +16,8 @@ public:
     Button();
     Button(int x, int y, int width, int height, GAME_EVENTS event);
 
+    void setTexture(SDL_Texture* texture);
+
     bool checkForPress(int mouseX, int mouseY);
     GAME_EVENTS getEvent() { return _clickEvent; }
 
@@ -28,6 +30,8 @@ private:
     int _height;
 
     GAME_EVENTS _clickEvent;
+
+    SDL_Texture* _buttonTexture;
 
 
 };

@@ -25,7 +25,7 @@ bool SDLManager::init()
 	else
 	{
 		//Create window
-		_window = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+		_window = SDL_CreateWindow( "Game of Life", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
 		if( _window == NULL )
 		{
 			printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
@@ -34,7 +34,7 @@ bool SDLManager::init()
 		else
 		{
 			//Get window surface
-			_screenSurface = SDL_GetWindowSurface( _window );
+			//_screenSurface = SDL_GetWindowSurface( _window );
 
 			_renderer = SDL_CreateRenderer( _window, -1, SDL_RENDERER_ACCELERATED );
 			if( _renderer == NULL )
@@ -49,11 +49,17 @@ bool SDLManager::init()
 	_mouseEventY = 0;
 	_changeCell = false;
 
-	addButton(20,20,50,50, GAME_EVENT_QUIT);
+	SDL_Texture* increaseTexture = loadTexture("increase.bmp");
+	SDL_Texture* decreaseTexture = loadTexture("decrease.bmp");
+	SDL_Texture* runTexture = loadTexture("run.bmp");
 
-	addButton(400, 30, 50, 50, GAME_EVENT_INCREASESIZE);
-	addButton(500, 30, 50, 50, GAME_EVENT_DECREASESIZE);
-	addButton((SCREEN_WIDTH / 2) - 20, BOARD_Y + BOARD_HEIGHT + 50, 100, 50, GAME_EVENT_RUN);
+
+
+	//addButton(20,20,50,50, GAME_EVENT_QUIT);
+
+	addButton((SCREEN_WIDTH / 2) - 75, 30, 50, 50, GAME_EVENT_INCREASESIZE, increaseTexture);
+	addButton((SCREEN_WIDTH / 2) + 75, 30, 50, 50, GAME_EVENT_DECREASESIZE, decreaseTexture);
+	addButton((SCREEN_WIDTH / 2) - 20, BOARD_Y + BOARD_HEIGHT + 50, 100, 50, GAME_EVENT_RUN, runTexture);
 
 	return success;
 }
@@ -150,11 +156,16 @@ void SDLManager::handleEvents()
 	}
 }
 
+/// @brief Returns true if there are unprocessed GAME_EVENTS
+/// @return 
 bool SDLManager::isEvents()
 {
 	return _eventQueue.size() > 0;
 }
 
+
+/// @brief Gets the net unprocessed GAME_EVENT
+/// @return 
 GAME_EVENTS SDLManager::getNextEvent()
 {
 	if (_eventQueue.size() > 0)
@@ -168,6 +179,8 @@ GAME_EVENTS SDLManager::getNextEvent()
 	 
 }
 
+/// @brief Renders the board
+/// @param board 
 void SDLManager::DrawBoard(Board* board)
 {
 	int boardWidth = board->GetWidth();
@@ -250,12 +263,21 @@ void SDLManager::DrawBoard(Board* board)
 	SDL_RenderPresent( _renderer );	
 }
 
-void SDLManager::addButton(int x, int y, int width, int height, GAME_EVENTS event)
+/// @brief Add a button
+/// @param x X position of the button
+/// @param y Y position of the button
+/// @param width 
+/// @param height 
+/// @param event The GAME_EVENT that will be returned if the button has been clicked
+void SDLManager::addButton(int x, int y, int width, int height, GAME_EVENTS event, SDL_Texture* texture)
 {
 	Button* button = new Button(x, y, width, height, event);
+	button->setTexture(texture);
 	_buttons.push_back(button);
 }
 
+
+/// @brief Draw the frame surrouding the board
 void SDLManager::DrawFrame()
 {
 	//Clear screen
@@ -277,95 +299,9 @@ void SDLManager::DrawFrame()
 }
 
 
-bool SDLManager::loadMedia()
-{
-	//Loading success flag
-	bool success = true;
-	SDL_Surface* otherWorld = loadSurface( "hello_otherWorld.bmp" );
-
-	//Load splash image
-	_helloWorld = loadSurface( "hello_world.bmp" );
-	if( _helloWorld == NULL )
-	{
-		success = false;
-	}
-    else
-    {
-		//Main loop flag
-			bool quit = false;
-
-			_currentSurface = _helloWorld;
-
-			//Event handler
-			SDL_Event e;
-
-			//While application is running
-			while( !quit )
-			{
-				//Handle events on queue
-				while( SDL_PollEvent( &e ) != 0 )
-				{
-					//User requests quit
-					if( e.type == SDL_QUIT )
-					{
-						quit = true;
-					}
-
-					//User presses a key
-                    else if( e.type == SDL_KEYDOWN )
-                    {
-                        //Select surfaces based on key press
-                        switch( e.key.keysym.sym )
-                        {
-                            case SDLK_UP:
-                            _currentSurface = otherWorld;
-                            break;
-
-                            case SDLK_DOWN:
-                            _currentSurface = _helloWorld;
-                            break;
-						}
-					}
-				}
-
-				//Apply the image
-				SDL_BlitSurface( _currentSurface, NULL, _screenSurface, NULL );
-				
-				//Update the surface
-				SDL_UpdateWindowSurface( _window );
-			}
-    }
-
-	return success;
-}
-
-SDL_Surface* SDLManager::loadSurface( std::string path )
-{
-	//The final optimized image
-	SDL_Surface* optimizedSurface = NULL;
-
-    //Load image at specified path
-    SDL_Surface* loadedSurface = SDL_LoadBMP( path.c_str() );
-    if( loadedSurface == NULL )
-    {
-        printf( "Unable to load image %s! SDL Error: %s\n", path.c_str(), SDL_GetError() );
-    }
-		else
-	{
-		//Convert surface to screen format
-		optimizedSurface = SDL_ConvertSurface( loadedSurface, _screenSurface->format, 0 );
-		if( optimizedSurface == NULL )
-		{
-			printf( "Unable to optimize image %s! SDL Error: %s\n", path.c_str(), SDL_GetError() );
-		}
-
-		//Get rid of old loaded surface
-		SDL_FreeSurface( loadedSurface );
-	}
-
-    return optimizedSurface;
-}
-
+/// @brief Load a texture. Code is based on the code from the LazyFoo tutorials
+/// @param path 
+/// @return 
 SDL_Texture* SDLManager::loadTexture( std::string path )
 {
     //The final texture
@@ -395,10 +331,6 @@ SDL_Texture* SDLManager::loadTexture( std::string path )
 
 void SDLManager::closeWindow()
 {
-	//Deallocate surface
-	SDL_FreeSurface( _helloWorld );
-	_helloWorld = NULL;
-
 	//Destroy window
 	SDL_DestroyWindow( _window );
 	_window = NULL;
@@ -408,35 +340,4 @@ void SDLManager::closeWindow()
 
 	//Quit SDL subsystems
 	SDL_Quit();
-}
-
-void SDLManager::TestTexture()
-{
-	bool quit = false;
-	SDL_Event e;
-	SDL_Texture* gTexture = loadTexture("hello_world.bmp");
-
-
-		//While application is running
-	while( !quit )
-	{
-		//Handle events on queue
-		while( SDL_PollEvent( &e ) != 0 )
-		{
-			//User requests quit
-			if( e.type == SDL_QUIT )
-			{
-				quit = true;
-			}
-		}
-
-		//Clear screen
-		SDL_RenderClear( _renderer );
-
-		//Render texture to screen
-		SDL_RenderCopy( _renderer, gTexture, NULL, NULL );
-
-		//Update screen
-		SDL_RenderPresent( _renderer );
-	}
 }

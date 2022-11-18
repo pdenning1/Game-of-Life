@@ -39,29 +39,15 @@ public:
     void DrawBoard(Board* board);
     void DrawFrame();
 
-    ////
-    void TestTexture();
-
 private:
-    SDL_Surface* loadSurface( std::string path );
     SDL_Texture* loadTexture( std::string path );
 
     bool addEvent(GAME_EVENTS event);
-    void addButton(int x, int y, int width, int height, GAME_EVENTS event);
+    void addButton(int x, int y, int width, int height, GAME_EVENTS event, SDL_Texture* texture);
 
     //The window we'll be rendering to
     SDL_Window* _window = NULL;
-    SDL_Renderer* _renderer = NULL;
-        
-    //The surface contained by the window
-    SDL_Surface* _screenSurface = NULL;
-
-    //The image we will load and show on the screen
-    SDL_Surface* _helloWorld = NULL;
-
-    SDL_Surface* _currentSurface = NULL;
-
-    //SDL_Rect _boardViewport;
+    SDL_Renderer* _renderer = NULL;        
 
     std::vector<GAME_EVENTS> _eventQueue; 
 
