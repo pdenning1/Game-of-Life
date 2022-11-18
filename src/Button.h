@@ -13,8 +13,8 @@ class Button
 {
 
 public:
-    Button();
     Button(int x, int y, int width, int height, GAME_EVENTS event);
+    ~Button();
 
     void setTexture(SDL_Texture* texture);
 

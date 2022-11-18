@@ -19,8 +19,6 @@ std::vector<Coordinates>* SaveFileManager::loadSavedLayout()
             std::cout << json << std::endl;
         }
 
-
-
         if (json.compare("") != 0)
         {
             // parse json here

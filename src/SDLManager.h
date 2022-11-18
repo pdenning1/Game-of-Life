@@ -29,21 +29,21 @@ public:
     //Loads media
     bool loadMedia();
 
-    //Frees media and shuts down SDL
-    void closeWindow();
-
     void handleEvents();
     bool isEvents();
     GAME_EVENTS getNextEvent();
 
-    void DrawBoard(Board* board);
-    void DrawFrame();
+    void drawBoard(Board* board);
+    void drawFrame();
 
 private:
     SDL_Texture* loadTexture( std::string path );
 
     bool addEvent(GAME_EVENTS event);
     void addButton(int x, int y, int width, int height, GAME_EVENTS event, SDL_Texture* texture);
+
+    //Frees media and shuts down SDL
+    void closeWindow();
 
     //The window we'll be rendering to
     SDL_Window* _window = NULL;

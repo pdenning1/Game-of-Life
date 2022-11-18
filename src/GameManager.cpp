@@ -37,10 +37,14 @@ GameManager::~GameManager()
 
     if(_sdlManager != nullptr)
     {
-        _sdlManager->closeWindow();
-
         delete _sdlManager;
         _sdlManager = nullptr;
+    }
+
+    if(_saveFileManager != nullptr)
+    {
+        delete _saveFileManager;
+        _saveFileManager = nullptr;
     }
 }
 
@@ -60,7 +64,7 @@ bool GameManager::init()
 		std::cout <<  "Initialized SDLManager" << std::endl;
     }
 
-	_sdlManager->DrawFrame(); // render the graphics that won't change thoughout the game (background etc)
+	_sdlManager->drawFrame(); // render the graphics that won't change thoughout the game (background etc)
 
     std::vector<Coordinates>* boardCoords = _saveFileManager->loadSavedLayout();
 
@@ -103,13 +107,13 @@ bool GameManager::handleInput()
         else if (event == GAME_EVENT_INCREASESIZE)
         {
             increaseBoardSize();
-            _sdlManager->DrawBoard(_currentBoard);
+            _sdlManager->drawBoard(_currentBoard);
         }
 
         else if (event == GAME_EVENT_DECREASESIZE)
         {
             decreaseBoardSize();
-            _sdlManager->DrawBoard(_currentBoard);
+            _sdlManager->drawBoard(_currentBoard);
         }
 
     }
@@ -130,7 +134,7 @@ void GameManager::updateGameState()
 
 void GameManager::render()
 {
-    _sdlManager->DrawBoard(_currentBoard);
+    _sdlManager->drawBoard(_currentBoard);
 }
 
 
@@ -144,7 +148,7 @@ void GameManager::iterateBoard()
     {
         for (int j = 0; j < height; j++)
         {
-            if (((i > 0) && (i < width-1)) && ((j > 0) && (j < height-1))) // ignore edges for now.... TODO
+            if (((i > 0) && (i < width-1)) && ((j > 0) && (j < height-1))) // ignore edges for now....
             {
                 int sum = 0;
                 for (int x = i -1; x <= i + 1; x++)

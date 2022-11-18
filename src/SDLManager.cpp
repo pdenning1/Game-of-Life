@@ -9,6 +9,8 @@ SDLManager::~SDLManager()
 	{
 		delete button;
 	}
+
+	closeWindow();
 }
 
 bool SDLManager::init()
@@ -181,7 +183,7 @@ GAME_EVENTS SDLManager::getNextEvent()
 
 /// @brief Renders the board
 /// @param board 
-void SDLManager::DrawBoard(Board* board)
+void SDLManager::drawBoard(Board* board)
 {
 	int boardWidth = board->GetWidth();
 	int boardHeight = board->GetHeight();
@@ -278,7 +280,7 @@ void SDLManager::addButton(int x, int y, int width, int height, GAME_EVENTS even
 
 
 /// @brief Draw the frame surrouding the board
-void SDLManager::DrawFrame()
+void SDLManager::drawFrame()
 {
 	//Clear screen
 	SDL_SetRenderDrawColor( _renderer, 0xFF, 0xFF, 0xFF, 0xFF );

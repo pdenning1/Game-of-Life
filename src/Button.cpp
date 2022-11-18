@@ -1,20 +1,14 @@
 #include "Button.h"
 
-
-Button::Button()
-{
-    _xPosition = 0;
-    _yPosition = 0;
-    _width = 0;
-    _height = 0;
-    _clickEvent = GAME_EVENT_NO_EVENT;
-    _buttonTexture = nullptr;
-}
-
 Button::Button(int x, int y, int width, int height, GAME_EVENTS event) :
     _xPosition(x), _yPosition(y), _width(width), _height(height), _clickEvent(event)
 {
     _buttonTexture = nullptr;
+}
+
+Button::~Button()
+{
+    SDL_DestroyTexture(_buttonTexture);
 }
 
 void Button::setTexture(SDL_Texture* texture)
